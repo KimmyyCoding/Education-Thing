@@ -1,0 +1,7 @@
+# Downloaded libraries (recreated by `npm install`)
+node_modules/
+
+# Obsidian's per-vault state, including the built plugin and its data files
+test-vault/.obsidian/
+
+.claude/

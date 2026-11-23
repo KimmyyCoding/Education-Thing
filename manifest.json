@@ -1,0 +1,9 @@
+{
+  "id": "curious",
+  "name": "Curious",
+  "version": "0.0.1",
+  "minAppVersion": "1.5.0",
+  "description": "A local learning tool: the AI proposes, you do the thinking.",
+  "author": "Michael Zhang",
+  "isDesktopOnly": true
+}
