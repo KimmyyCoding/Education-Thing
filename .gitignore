@@ -5,3 +5,6 @@ node_modules/
 test-vault/.obsidian/
 
 .claude/
+
+# The personal test vault (school notes); keep it out of git for privacy
+TestVault/

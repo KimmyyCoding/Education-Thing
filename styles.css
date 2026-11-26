@@ -1,1 +1,487 @@
-/* Styles for the Curious plugin. Empty until milestone 2 (suggestions panel). */
+/* Styles for the Curious plugin. */
+
+/* Answer boxes shown under a command line. They aren't part of the note,
+   so they get their own look rather than a callout's. */
+.curious-answer {
+  --curious-color: var(--color-accent-rgb, 124, 93, 199);
+  margin: 6px 0 10px;
+  padding: 8px 12px 10px;
+  border-left: 3px solid rgb(var(--curious-color));
+  border-radius: var(--radius-s, 4px);
+  background: rgba(var(--curious-color), 0.08);
+  font-size: var(--font-ui-small, 0.9em);
+  white-space: normal;
+  user-select: text;
+}
+
+.curious-answer-recall { --curious-color: 124, 93, 199; }  /* purple */
+.curious-answer-ask    { --curious-color: 66, 133, 214; }  /* blue */
+.curious-answer-search { --curious-color: 46, 160, 110; }  /* green */
+
+.curious-answer-header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-weight: 600;
+  color: rgb(var(--curious-color));
+}
+
+.curious-answer-title {
+  flex: 1;
+}
+
+.curious-answer-button {
+  /* Override Obsidian's default button look: just a small "↻" or "×". */
+  all: unset;
+  cursor: pointer;
+  padding: 0 4px;
+  font-size: 1.2em;
+  line-height: 1;
+  color: var(--text-muted);
+}
+
+.curious-answer-button:hover {
+  color: var(--text-normal);
+}
+
+.curious-answer-body > :first-child { margin-top: 4px; }
+.curious-answer-body > :last-child { margin-bottom: 0; }
+
+/* The @search side panel. */
+.curious-search {
+  --curious-color: 46, 160, 110; /* green, like search boxes */
+  padding: 12px;
+  font-size: var(--font-ui-small, 0.9em);
+  user-select: text;
+}
+
+.curious-search-header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+  border-bottom: 2px solid rgb(var(--curious-color));
+}
+
+.curious-search-title {
+  flex: 1;
+  font-weight: 600;
+  color: rgb(var(--curious-color));
+}
+
+.curious-search-status,
+.curious-search-empty {
+  color: var(--text-muted);
+}
+
+.curious-search-fold {
+  margin: 8px 0;
+}
+
+.curious-search-fold > summary {
+  cursor: pointer;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.curious-search-related {
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid var(--background-modifier-border);
+  color: var(--text-muted);
+}
+
+/* The @commands pop-up. */
+.curious-commands table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
+  font-size: var(--font-ui-small, 0.9em);
+}
+
+.curious-commands th,
+.curious-commands td {
+  text-align: left;
+  vertical-align: top;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.curious-commands code {
+  white-space: nowrap;
+}
+
+.curious-commands-sends,
+.curious-commands-hint {
+  color: var(--text-muted);
+}
+
+/* Follow-ups in the search panel. */
+.curious-search-question {
+  margin: 14px 0 6px;
+  padding-top: 10px;
+  border-top: 1px solid var(--background-modifier-border);
+  font-weight: 600;
+  color: rgb(var(--curious-color));
+}
+
+.curious-search-earlier {
+  margin: 4px 0;
+  color: var(--text-muted);
+}
+
+.curious-search-earlier > summary {
+  cursor: pointer;
+}
+
+.curious-search-followups {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid var(--background-modifier-border);
+}
+
+.curious-search-followups-label {
+  margin-bottom: 4px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.curious-search-suggestion {
+  all: unset;
+  display: block;
+  cursor: pointer;
+  padding: 3px 0;
+  color: var(--text-normal);
+}
+
+.curious-search-suggestion:hover {
+  color: rgb(var(--curious-color));
+}
+
+.curious-search-input {
+  width: 100%;
+  margin-top: 8px;
+}
+
+/* Chunks (question + answer) in the search panel; the selected one is open. */
+.curious-search-chunk.is-selected {
+  padding-left: 8px;
+  border-left: 2px solid rgba(var(--curious-color), 0.5);
+}
+
+.curious-search-folded {
+  cursor: pointer;
+  padding: 3px 0;
+  color: var(--text-muted);
+}
+
+.curious-search-folded:hover {
+  color: var(--text-normal);
+}
+
+/* "📎 Selection from Beta · 6 lines" chips for attached notes. */
+.curious-search-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0 4px;
+}
+
+.curious-search-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: var(--radius-m, 8px);
+  background: rgba(var(--curious-color), 0.12);
+  font-size: 0.9em;
+}
+
+/* The note picker @recall opens in the search chat. */
+.curious-picker-name {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.curious-picker-tag {
+  font-size: 0.8em;
+  color: var(--text-muted);
+}
+
+.curious-picker-path {
+  font-size: 0.85em;
+  color: var(--text-faint);
+}
+
+/* The @tag pop-up. */
+.curious-tags-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 6px 8px;
+  border-radius: var(--radius-s, 4px);
+  cursor: pointer;
+}
+
+.curious-tags-row.is-active {
+  background: var(--background-modifier-hover);
+}
+
+.curious-tags-name {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  font-weight: 600;
+}
+
+.curious-tags-new {
+  font-size: 0.75em;
+  font-weight: normal;
+  padding: 0 6px;
+  border-radius: var(--radius-s, 4px);
+  background: var(--background-modifier-border);
+  color: var(--text-muted);
+}
+
+.curious-tags-reason,
+.curious-tags-status,
+.curious-tags-help {
+  color: var(--text-muted);
+  font-size: 0.9em;
+}
+
+.curious-tags-help {
+  margin-top: 10px;
+}
+
+/* The Alt+E "suggest edits" pop-up. */
+.curious-edit-modal {
+  width: min(680px, 90vw);
+}
+
+.curious-edit-original,
+.curious-edit-diff {
+  white-space: pre-wrap;
+  max-height: 40vh;
+  overflow-y: auto;
+  padding: 8px 10px;
+  border-radius: var(--radius-s, 4px);
+  background: var(--background-secondary);
+  line-height: 1.6;
+}
+
+.curious-edit-removed {
+  color: var(--text-error);
+  text-decoration: line-through;
+  background: rgba(var(--color-red-rgb), 0.1);
+}
+
+.curious-edit-added {
+  color: var(--text-success);
+  background: rgba(var(--color-green-rgb), 0.15);
+}
+
+.curious-edit-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0;
+}
+
+.curious-edit-changes {
+  margin: 10px 0;
+  color: var(--text-muted);
+  font-size: 0.9em;
+}
+
+.curious-edit-buttons {
+  display: flex;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.curious-edit-input {
+  width: 100%;
+  resize: vertical;
+  margin-top: 6px;
+}
+
+.curious-edit-status,
+.curious-edit-help {
+  color: var(--text-muted);
+  font-size: 0.9em;
+}
+
+.curious-edit-help {
+  margin-top: 8px;
+}
+
+/* The side browser (Alt+O). */
+.curious-browser.view-content {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+
+.curious-browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 6px;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.curious-browser-bar button {
+  padding: 2px 8px;
+  height: auto;
+}
+
+.curious-browser-title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-muted);
+  font-size: 0.85em;
+  padding: 0 4px;
+}
+
+.curious-browser-zoom {
+  min-width: 52px;
+  font-variant-numeric: tabular-nums;
+}
+
+.curious-browser-page {
+  flex: 1;
+  width: 100%;
+  border: none;
+}
+
+/* Keyboard use of the side browser: a ring shows when the page has the
+   keyboard, with its keys listed underneath. */
+.curious-browser.is-focused .curious-browser-page {
+  outline: 2px solid var(--interactive-accent);
+  outline-offset: -2px;
+}
+
+.curious-browser-help {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 12px;
+  padding: 3px 8px;
+  font-size: 0.78em;
+  color: var(--text-muted);
+  border-top: 1px solid var(--background-modifier-border);
+}
+
+.curious-browser-help-label {
+  color: var(--text-faint);
+}
+
+.curious-browser-help kbd {
+  font-size: 0.95em;
+}
+
+.curious-browser-address {
+  width: 100%;
+}
+
+/* Shortcut hints: a label pinned to the top-right corner of the note.
+   The bar holding it has no height, so the text never moves. */
+.curious-hint-bar {
+  position: relative;
+  height: 0;
+  overflow: visible;
+}
+
+/* Obsidian draws a line under the editor's top panels; not needed here. */
+.cm-panels-top:has(> .curious-hint-bar:only-child) {
+  border: none;
+  background: none;
+}
+
+.curious-hint {
+  position: absolute;
+  top: 6px;
+  right: 14px;
+  padding: 2px 8px;
+  font-size: 0.8em;
+  color: var(--text-muted);
+  background: var(--background-primary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-s, 4px);
+  box-shadow: var(--shadow-s);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.curious-hint.is-empty {
+  display: none;
+}
+
+.curious-hint kbd {
+  font-size: 0.95em;
+}
+
+.curious-hint-sep {
+  margin: 0 6px;
+  color: var(--text-faint);
+}
+
+/* The Chat · Web switch at the top of the side pane. */
+.curious-switcher {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 6px;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.curious-switcher-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 10px;
+  height: auto;
+  background: none;
+  box-shadow: none;
+  color: var(--text-muted);
+}
+
+.curious-switcher-tab.is-active {
+  background: var(--background-modifier-active-hover);
+  color: var(--text-normal);
+  font-weight: 600;
+}
+
+.curious-switcher-tab kbd,
+.curious-switcher-hint kbd {
+  font-size: 0.75em;
+  font-weight: normal;
+}
+
+.curious-switcher-hint {
+  margin-left: auto;
+  font-size: 0.8em;
+  color: var(--text-faint);
+}
+
+/* Keep the key lists on screen: the page (or PDF) takes the space that's
+   left, and the list never gets squeezed out of view. */
+.curious-browser-page {
+  min-height: 0;
+}
+
+.curious-browser-help {
+  flex: 0 0 auto;
+}
+
+.workspace-leaf-content:has(> .curious-pdf-help) > .view-content {
+  flex: 1 1 0;
+  min-height: 0;
+  height: auto;
+}
